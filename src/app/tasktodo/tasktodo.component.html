@@ -1,0 +1,30 @@
+<div>
+  <ng-container *ngIf="task; else elseTemplate">
+
+  <div *ngIf="task.length > 0; else elseNoTask">
+    <div *ngFor="let task of task; let i = index"  >
+      <div>
+        - {{task.title}}
+        <button class="complete" (click)="completeTask(task,i)" >✅</button>
+      </div>
+
+    </div>
+
+  </div>
+  </ng-container>
+  <ng-template #elseTemplate>
+  <p>Recupero Tasks...</p>
+
+  </ng-template>
+
+
+</div>
+
+<div class="footer">
+  <input type="text" [(ngModel)]="newTaskTitle" >
+  <button (click)="addTask()" >+</button>
+</div>
+
+<ng-template #elseNoTask>
+  <p>Oops, non ci sono Task</p>
+</ng-template>
